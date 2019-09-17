@@ -144,7 +144,7 @@ Try {
 		## <Perform Installation tasks here>
 
 		#If expired, regenerate msi at remote.msudenver.edu/login and use new key below
-		Execute-MSI -Action 'Install' -Path "$dirFiles\bomgar-scc-win64.msi" -Parameters 'KEY_INFO=XXXXXXX REBOOT=ReallySuppress /QN'
+		Execute-MSI -Action 'Install' -Path "$dirFiles\bomgar-scc-win64.msi" -Parameters 'KEY_INFO= REBOOT=ReallySuppress /QN'
 
 		##*===============================================
 		##* POST-INSTALLATION
@@ -186,6 +186,8 @@ Try {
 		}
 
 		# <Perform Uninstallation tasks here>
+		$exitCode = Remove-MSIApplications -Name "Bomgar Jump Client" -PassThru
+		If (($exitCode.ExitCode -ne "0") -and ($mainExitCode -ne "3010")) { $mainExitCode = $exitCode.ExitCode }
 
 
 		##*===============================================
@@ -217,8 +219,8 @@ Catch {
 # SIG # Begin signature block
 # MIIOaQYJKoZIhvcNAQcCoIIOWjCCDlYCAQExCzAJBgUrDgMCGgUAMGkGCisGAQQB
 # gjcCAQSgWzBZMDQGCisGAQQBgjcCAR4wJgIDAQAABBAfzDtgWUsITrck0sYpfvNR
-# AgEAAgEAAgEAAgEAAgEAMCEwCQYFKw4DAhoFAAQUb0OYidp3cVxtWjOXRHLFSY3n
-# fuGggguhMIIFrjCCBJagAwIBAgIQBwNx0Q95WkBxmSuUB2Kb4jANBgkqhkiG9w0B
+# AgEAAgEAAgEAAgEAAgEAMCEwCQYFKw4DAhoFAAQUq2q0ZnRJZRP7ImRzz9FDQqD/
+# Mx+ggguhMIIFrjCCBJagAwIBAgIQBwNx0Q95WkBxmSuUB2Kb4jANBgkqhkiG9w0B
 # AQsFADB8MQswCQYDVQQGEwJVUzELMAkGA1UECBMCTUkxEjAQBgNVBAcTCUFubiBB
 # cmJvcjESMBAGA1UEChMJSW50ZXJuZXQyMREwDwYDVQQLEwhJbkNvbW1vbjElMCMG
 # A1UEAxMcSW5Db21tb24gUlNBIENvZGUgU2lnbmluZyBDQTAeFw0xODA2MjEwMDAw
@@ -285,11 +287,11 @@ Catch {
 # BAsTCEluQ29tbW9uMSUwIwYDVQQDExxJbkNvbW1vbiBSU0EgQ29kZSBTaWduaW5n
 # IENBAhAHA3HRD3laQHGZK5QHYpviMAkGBSsOAwIaBQCgeDAYBgorBgEEAYI3AgEM
 # MQowCKACgAChAoAAMBkGCSqGSIb3DQEJAzEMBgorBgEEAYI3AgEEMBwGCisGAQQB
-# gjcCAQsxDjAMBgorBgEEAYI3AgEVMCMGCSqGSIb3DQEJBDEWBBRa+mIDakcV7eZO
-# 2h04m09NWv8QvTANBgkqhkiG9w0BAQEFAASCAQBnApnFP3hpKlDBDCCW6hBXSbgF
-# oDOBd8Kn/mBzSoFJQ+Pk8GM0Iogm6V+CdRKRTBFAymdevulWKeSjq5KkCLgXZ0zi
-# Bq/aIQ3dJpzGdRggi1dBVtbN9ox+nMdUPoTePHU8xia5V/41agHRsJudaxwW+ZoF
-# Tbg7GQAJKKSaYoD4GHSw21akNzzY5eK27/NqOD1A4YyIZMKusUuR+bwnlII7PZwx
-# 5xl9MJEEd52Dy79OP/k/RppcdR16rstguT13rqv/7xrjCPFm4aCaidMIB5PpvF1c
-# xOEd5g3rt7UKJIY3XCp3RRgm7gFAq8iys0zaz2asjAjcB2znSFhWLMpIicCV
+# gjcCAQsxDjAMBgorBgEEAYI3AgEVMCMGCSqGSIb3DQEJBDEWBBTjME0hgHhH7Ctv
+# kFPeNjc4l6zYdDANBgkqhkiG9w0BAQEFAASCAQBOhjCuZkmLP6DUe0UZs2aDRT0H
+# tfqxT6/PECR+Zik/QNSQtxzDFT+qy7YhcsnnyyXgEhGDEUZxNRdUn8NPAVbWZQpQ
+# sQ/MyQVEkiGDdvPvDSLZ1wvugTlsj8yaQOkVknJf/4ee+WPUUlpkQ0zrAAqhdb/d
+# rKDxinys44TUNIYz+lYjOEUn8XkQCdmd/utwnM1CKMdvp3QCZt8Tj1bC5UMgW2WR
+# qFukpT2u24x/aoPp5Wwmtuj70Rc/LKRsKVyRv2S8EHRe8RxunlyYbo+ehjRvD7hd
+# k1zf6VPvJ6JE08KqtZXAiZZ/Le4SXwPs2LC7UBVs5H36YuFUt06BQWFawaqV
 # SIG # End signature block
