@@ -65,13 +65,13 @@ Try {
 	## Variables: Application
 	[string]$appVendor = 'Bomgar'
 	[string]$appName = 'Jump Client'
-	[string]$appVersion = '17.1.5'
+	[string]$appVersion = '19.2.1'
 	[string]$appArch = 'x64'
 	[string]$appLang = 'EN'
 	[string]$appRevision = '01'
 	[string]$appScriptVersion = '3.7.0.1'
-	[string]$appScriptDate = '09/17/2019'
-	[string]$appScriptAuthor = 'Steve Patterson'
+	[string]$appScriptDate = '12/18/2019'
+	[string]$appScriptAuthor = 'Steve Patterson & Truong Nguyen'
 	##*===============================================
 	## Variables: Install Titles (Only set here to override defaults set by the toolkit)
 	[string]$installName = ''
@@ -144,7 +144,7 @@ Try {
 		## <Perform Installation tasks here>
 
 		#If expired, regenerate msi at remote.msudenver.edu/login and use new key below
-		Execute-MSI -Action 'Install' -Path "$dirFiles\bomgar-scc-win64.msi" -Parameters 'KEY_INFO= REBOOT=ReallySuppress /QN'
+		Execute-MSI -Action 'Install' -Path "$dirFiles\bomgar-scc-win64.msi" -Parameters 'KEY_INFO=w0edc30fjzfijdhffj5xziwdezhjd1yhghi8856c40hc90 REBOOT=ReallySuppress /QN'
 
 		##*===============================================
 		##* POST-INSTALLATION
