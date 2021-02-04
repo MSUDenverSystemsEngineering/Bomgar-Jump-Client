@@ -186,8 +186,11 @@ Try {
 		}
 
 		# <Perform Uninstallation tasks here>
-		$exitCode = Remove-MSIApplications -Name "Bomgar Jump Client" -PassThru
+		Execute-MSI -Action 'Uninstall' -Path '{AF334156-0209-43D1-968F-7220F9A3D082}' -Parameters '/qn' -PassThru
+		$exitCode = '3010'
 		If (($exitCode.ExitCode -ne "0") -and ($mainExitCode -ne "3010")) { $mainExitCode = $exitCode.ExitCode }
+
+		#Remove-MSIApplications -Name "Bomgar Jump Client" -PassThru does not uninstall 19.2.1
 
 		##*===============================================
 		##* POST-UNINSTALLATION
